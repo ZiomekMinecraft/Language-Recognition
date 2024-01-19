@@ -108,20 +108,11 @@ def getLanguage(tekst: str):
     pf = ''.join([ letter if letter in frequrency else '' for letter in polishFrequrency])
     ef = ''.join([ letter if letter in frequrency else '' for letter in englishFrequrency])
 
-    # tekst służący do debugowania
-    if(__debug__):
-        print("[DEBUG] " + frequrency)
-        print("[DEBUG] " + pf)
-        print("[DEBUG] " + ef)
-
     # Krok pierwszy odgadnięcia języka
 
     # do zmiennej polish i english przypisuję zwróconą wartość z funkcji getFirstPoint
     polish = getFirstPoint(frequrency, pf)
     english = getFirstPoint(frequrency, ef)
-    # tekst służący do debugowania
-    if(__debug__):
-        print("[DEBUG] " + f"polish: {polish}\n[DEBUG] english: {english}")
 
     # if służący do ustalenia który język otrzymuje punkt
     # jeżeli zmienna polish i english równe są -1 język polski otrzymuje punkt 
@@ -188,16 +179,8 @@ def getLanguage(tekst: str):
 def main():
     # print informujący kto zrobił program ;)
     print("Program zrobiony przez Paweł P. (MZ)")
-    # print informacji o włączonym trybie debugowania
-    if __debug__:
-        print("[DEBUG] Tryb DEBUG jest włączony! Aby wyłączyć tryb debugowania proszę uruchomić program z parametrem -O lub -OO")
     # pozyskuje tekst do sprawdzenia języka
     tekst = input("Napisz swoje zdanie: ")
-    t = None
-    if __debug__:
-        from time import time
-
-        t = time()
     
     # wykonuje funkcję getLanguage i pozyskuję język w jakim został napisany tekst
     language, table, letters = getLanguage(tekst)
@@ -207,8 +190,6 @@ def main():
     print(f"częstotliwości liter:")
     for letter in dict(sorted(letters.items(), key=operator.itemgetter(1), reverse=True)):
         print(f" - {letter}: {int(letters[letter]*10000)/100 if letter in letters.keys() else 0}%")
-    if __debug__:
-        print(f"[DEBUG] polish: {table[0]}\n[DEBUG] english: {table[1]}\n[DEBUG] wykonano w {time()-t}s")
 
 
 
