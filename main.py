@@ -129,6 +129,7 @@ def getLanguage(tekst: str):
         polishPoint += 1
 
     # Krok drugi do ustalenia języka
+        
     # zmienne polish i english ustawimy na 0
     polish = 0
     english = 0
