@@ -15,7 +15,7 @@ testy = {True: 0, False: 0}
 dlugosc = len(polish)+len(english)
 with open("./data/badpolish.txt", encoding="UTF-8", mode="w") as f:
     for zdanie in polish:
-        lang, t = getLanguage(zdanie)
+        lang, t, _ = getLanguage(zdanie)
         testy[lang=="polski"] += 1
         if(lang!="polski"):
             f.write(zdanie)
@@ -29,7 +29,7 @@ with open("./data/badpolish.txt", encoding="UTF-8", mode="w") as f:
         print(tekst+"                       ", end="")
 with open("./data/badenglish.txt", encoding="UTF-8", mode="w") as f:
     for zdanie in english:
-        lang, t = getLanguage(zdanie)
+        lang, t, _ = getLanguage(zdanie)
         testy[lang=="angielski"] += 1
         if(lang!="angielski"):
             f.write(zdanie)
